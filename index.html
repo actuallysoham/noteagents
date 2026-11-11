@@ -3,32 +3,411 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
-  <title>Coming soon</title>
+  <title>WSDM Cup 2027 · Writing Agents for Community Notes</title>
+  <meta name="description" content="WSDM Cup 2027: build autonomous agents that write Community Notes on X, evaluated live by human raters.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
-  <style>
-    :root { --paper: #faf8f4; --ink: #1c2130; --line: rgba(28, 33, 48, 0.12); }
-    @media (prefers-color-scheme: dark) {
-      :root { --paper: #13161d; --ink: #ecebe6; --line: rgba(236, 235, 230, 0.12); }
-    }
-    body {
-      margin: 0; min-height: 100vh; min-height: 100dvh;
-      display: grid; place-items: center; padding: 16px;
-      background-color: var(--paper);
-      background-image: radial-gradient(var(--line) 1px, transparent 1px);
-      background-size: 22px 22px;
-      color: var(--ink);
-    }
-    h1 {
-      margin: 0; text-align: center;
-      font: 500 clamp(40px, 8vw, 72px)/1.05 "Newsreader", Georgia, serif;
-      letter-spacing: -0.02em;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Coming soon</h1>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="#top">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">WSDM Cup <b>2027</b></span>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="#overview">Overview</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#prizes">Prizes</a>
+        <a href="#participate">Participation</a>
+      </nav>
+      <!-- anon:remove -->
+      <a class="conf-logo" href="https://www.wsdm-conference.org/2027/" target="_blank" rel="noopener" aria-label="WSDM 2027">
+        <svg class="conf-logo__svg" viewBox="-16.5 -8.6 1714.4 433.3" aria-hidden="true">
+<path class="conf-logo__swoosh" fill-rule="evenodd" d="M139 375.3C97.6 348.2 70.4 308.5 60.9 261.2C58.2 247.8 57.2 217.7 58.9 203.2C63.3 167.2 79.1 125 100.6 91.7C103 88 105 84.7 105 84.5C105 82.9 97.4 84.5 90.6 87.5C72.4 95.4 55.3 108.7 45.5 122.4C33.5 139.5 23.7 169.3 20 200.5C18.5 212.4 18.2 238.3 19.3 253L20.1 263.5L16.5 258C14.6 255 11.6 248.9 9.9 244.5C-14.5 182.1 11 109.3 71.5 68.6C80.1 62.7 99.9 53 110.1 49.6C150.4 36.1 205 33.5 239.2 43.4C262.6 50.2 284.9 64.8 302.3 84.7C309.7 93.2 322.8 112.1 327.5 121.2C329.2 124.4 330.7 127 331 127C331.3 126.9 333.5 123.7 336 119.7C350.5 96.4 374.8 73.1 401.4 57.1C429.1 40.3 467 27.8 525.5 16.1C638.3 -6.6 746.5 -4.7 849 21.6C941.8 45.4 1015.6 81.6 1076.9 133.4C1095 148.6 1127 181.5 1133.5 191.4C1137.3 197.1 1133.9 195.8 1125.2 188.1C1028.2 102.7 913.1 51.1 787.5 37.1C753.8 33.3 704.5 31.8 678 33.7L668.7 34.3L679.1 36.7C709.6 43.5 738.8 56 760.8 71.7C769.8 78.2 786.3 92 785.7 92.6C785.5 92.8 780.8 90.5 775.2 87.4C721.6 57.9 652.7 44.7 574 48.9C542.4 50.6 476 57.2 476 58.7C476 58.9 478.6 62.2 481.7 66C494.1 80.6 498.9 92.1 499 106.3C499.1 138 472.7 164 440.5 164C419 163.9 399.1 153 390.2 136.2C386.2 128.7 382.3 115 381.4 105.6C380.6 96.7 380.9 96.7 370.6 106.1C357 118.6 349.5 131.1 341.1 155.4L336.4 169.2L329.3 157.3C315.9 135.1 300.3 116.7 284 104.1L276.2 98L274.5 105.8C269.3 129.2 258.4 147 243.8 155.7C235.8 160.6 223.5 163.4 213.5 162.7C190.3 161 173.9 151.1 165.7 134C160.2 122.4 158.7 113.6 159.1 96C159.3 87.7 159.4 81 159.3 81C159.2 81 155.6 82.6 151.4 84.5C112.6 102.2 87.9 140.2 80.4 193.6C78.2 209.7 78.9 237 81.9 252.3C87.9 282.3 101 308.2 120.8 329.1C125.7 334.3 130.9 340.8 132.3 343.5C135.2 349.4 148.1 380.2 147.7 380.6C147.6 380.7 143.7 378.3 139 375.3Z M442.2 132.2C448.3 129.5 456 122.3 458.8 116.7C462 110.3 463.2 102.6 462.1 96.3C460.1 85.6 452.5 75.3 442.9 70.4C438.4 68.2 438 68.1 434.5 69.6L430.8 71.1L435.9 73.7C441 76.2 444.4 79.7 447.3 85.5C453 97 447.7 111.9 435.6 118.3C429.9 121.3 419.1 121.3 413.4 118.3C408.6 115.7 403.3 110 401.3 105.1C399.5 101 399.4 91.7 400.9 87.6C402.4 83.8 401.9 83.5 398.8 86.4C396.7 88.3 396 90.1 395.5 95.3C394.6 103.2 395.3 107.7 398.5 114.6C402.5 123.7 410.2 130.6 419.3 133.6C425.1 135.5 436.3 134.8 442.2 132.2Z M241.4 130.1C247.7 127 253.2 121.5 256.5 115.1C258.9 110.2 261.5 97.3 260.6 94.1C260.4 93.2 259.9 91.3 259.6 89.7C259.1 87.5 257.8 86.4 253.3 84.5C250.2 83.1 247.5 82.2 247.3 82.4C247 82.6 247.4 83.9 248.1 85.2C250.2 89 249.7 99.8 247.2 104.7C241.2 116.2 229 121.5 216.8 117.8C211.7 116.3 204.2 109.6 201.9 104.5C198 96 200.1 82.8 206.3 77.1C209.2 74.4 209 73 205.6 73C202.9 73 199 77 195.9 83C193.9 86.8 193.6 89 193.5 97.5C193.5 106.5 193.8 108.2 196.4 113.8C199.9 121.4 206.8 128 214.3 130.9C221.7 133.9 234.5 133.5 241.4 130.1Z"/>
+<path class="conf-logo__type" fill-rule="evenodd" d="M385.8 421C371 418.3 356.7 411.5 343.6 400.9L334.9 393.9L329.5 398.8C313.3 413.6 294.2 421 272 421C236.8 421 206.7 401.5 194.7 370.9C189 356.6 188.8 353.3 188.3 281.2L187.8 215L217.9 215L247.9 215L248.2 277.8C248.5 333.2 248.8 341.1 250.3 345.5C253.1 353.9 257.1 359.2 263 362.4C267.7 364.9 269.5 365.4 276 365.4C285.9 365.4 292.7 362 297.7 354.5C303.7 345.3 304 342.6 304 275.2L304 215L335.5 215L367 215L367 278.3C367 349.4 366.9 348.2 374 356.3C379.7 362.7 385.8 365.4 394.5 365.4C404.6 365.4 412.7 360.8 417.7 352.2L420.5 347.5L421 281L421.5 214.5L452.2 214.2L483 214L483 264.7C482.9 322.5 481.9 350.7 479.5 360.7C477.2 370 470.1 384.3 464.3 391.2C449.6 408.7 424.9 420.4 400.5 421.5C395 421.7 388.4 421.5 385.8 421Z M725 420.1C704.8 415.6 689.1 407.5 674.9 394.2C646.8 367.7 634.8 325.2 645.7 290.6C654.4 262.9 677.6 236.4 703.4 224.4C717.2 218.1 725.4 216.5 744.5 216.5C760.5 216.5 762.3 216.7 774.3 219.8C781.4 221.6 787.8 222.9 788.6 222.6C789.8 222.2 790 215.1 790 179.5L790 137L820 137L850 137L850 231.2C850 335.9 849.9 336.7 843.6 354.5C838.7 368.1 832.1 378.6 821.6 389.7C807.5 404.6 791.8 413.9 772.2 419.2C760.9 422.2 736.7 422.7 725 420.1Z M1101.2 357.2C1101.6 320.1 1101.4 295.4 1100.8 292C1098.9 281.5 1092.7 273.5 1084.1 270.4C1079.5 268.7 1068.5 268.7 1063.9 270.4C1057.6 272.6 1053.2 276.8 1049.8 283.8L1046.5 290.5L1046.2 353.2L1045.9 416L1014.5 416L983 416L983 354.2C983 284.8 983.1 285.8 976 277.8C970.2 271.2 963.7 268.6 953.9 269.2C947.9 269.6 945.3 270.2 941.6 272.4C936.5 275.4 931.7 281.9 930 288C929.4 290.1 929 316.1 929 353.8L929 416L898.2 416L867.5 416L867.6 352.3C867.7 308.6 868.1 286.4 868.9 282C875.1 247.4 897.4 224.1 933.5 214.4C938.7 213 943.9 212.5 953.5 212.6C965.5 212.6 967.2 212.8 975.9 215.8C987.3 219.7 996.2 224.8 1006.9 233.6L1015 240.2L1019.8 235.8C1038.3 218.5 1062.8 210.2 1086.9 213C1106.8 215.4 1124.4 223.6 1138 237C1150.1 248.9 1157.3 263.1 1159.9 280C1161.7 291.2 1162.4 333.5 1161.5 377.2L1160.8 417L1130.7 417L1100.7 417L1101.2 357.2Z M488 387.1L488 361.1L528.1 360.8L568.2 360.5L571.1 357.2C574.9 353 575 348 571.5 344.5C570.2 343.1 559.8 337.5 548.5 332.1C524.2 320.3 516.5 315.4 507.8 306.1C494.9 292.5 490.5 276.4 494.5 257.6C497.6 243.1 506.8 229.7 517.8 223.7C527.3 218.5 532 217.9 566 217.3C583.3 217 604.6 217.1 613.3 217.5L629 218.2L628.8 243.4L628.5 268.5L593.5 269C562.1 269.4 558.1 269.7 555.7 271.3C552.2 273.5 552 278.6 555.2 282C556.4 283.3 566.6 288.8 577.9 294.2C589.3 299.6 601.2 305.4 604.5 307.2C630.6 320.8 643.1 339.8 641.7 364C640.3 389.8 627.5 407.6 607.2 411.9C603.6 412.6 583.3 413 545 413L488 413L488 387.1Z M753.5 361.9C765.4 359.7 777.5 351.3 783.7 340.9C798 317 786.3 287.2 758.9 278C753.6 276.2 751 275.9 743.8 276.3C727.5 277.2 714 286.1 706.8 300.7C703.6 307.2 703.5 308 703.5 319C703.5 330.1 703.6 330.8 706.9 337.5C713 349.8 724.2 358.8 737 361.6C744.1 363.2 746.4 363.2 753.5 361.9Z"/>
+<path class="conf-logo__year" fill-rule="nonzero" d="M1217 416.1V390.7Q1234.7 375.5 1249.3 361.6Q1263.8 347.7 1272.3 335.6Q1280.8 323.4 1280.8 313.3Q1280.8 303 1275.7 298.1Q1270.5 293.2 1262.1 293.2Q1254.7 293.2 1248.7 297.6Q1242.7 302.1 1237.1 307.6L1216 286.5Q1227.5 273.5 1239.4 267.2Q1251.3 261 1267.9 261Q1283.2 261 1295 267.1Q1306.8 273.2 1313.5 284.4Q1320.2 295.6 1320.2 310.5Q1320.2 323.9 1313.1 336.4Q1306 348.9 1295.1 360.7Q1284.2 372.4 1272.7 383.5Q1278.4 382.7 1285.8 382.1Q1293.1 381.5 1298.1 381.5H1327.4V416.1Z M1395.8 419Q1370.6 419 1354.9 398.7Q1339.1 378.4 1339.1 339.3Q1339.1 300.1 1354.9 280.6Q1370.6 261 1395.8 261Q1421 261 1436.8 280.7Q1452.5 300.4 1452.5 339.3Q1452.5 378.4 1436.8 398.7Q1421 419 1395.8 419ZM1395.8 387.3Q1400.6 387.3 1404.7 383.7Q1408.8 380.1 1411.2 369.8Q1413.6 359.4 1413.6 339.3Q1413.6 319.1 1411.2 309.1Q1408.8 299.2 1404.7 295.9Q1400.6 292.7 1395.8 292.7Q1391 292.7 1386.9 295.9Q1382.8 299.2 1380.4 309.1Q1378 319.1 1378 339.3Q1378 359.4 1380.4 369.8Q1382.8 380.1 1386.9 383.7Q1391 387.3 1395.8 387.3Z M1462.3 416.1V390.7Q1480.1 375.5 1494.6 361.6Q1509.1 347.7 1517.6 335.6Q1526.2 323.4 1526.2 313.3Q1526.2 303 1521 298.1Q1515.8 293.2 1507.4 293.2Q1500 293.2 1494 297.6Q1488 302.1 1482.5 307.6L1461.3 286.5Q1472.9 273.5 1484.7 267.2Q1496.6 261 1513.2 261Q1528.6 261 1540.3 267.1Q1552.1 273.2 1558.8 284.4Q1565.5 295.6 1565.5 310.5Q1565.5 323.9 1558.5 336.4Q1551.4 348.9 1540.5 360.7Q1529.5 372.4 1518 383.5Q1523.8 382.7 1531.1 382.1Q1538.4 381.5 1543.5 381.5H1572.7V416.1Z M1610.4 416.1Q1611.6 398.1 1614.1 383Q1616.7 367.9 1621.5 354.2Q1626.3 340.5 1633.7 326.9Q1641.1 313.3 1652.2 298.5H1586.9V263.9H1695.9V289.3Q1682.4 304.9 1674.2 318.5Q1665.9 332.1 1661.4 346.1Q1657 360.2 1655 377Q1652.9 393.8 1651.7 416.1Z"/>
+</svg>
+      </a>
+      <!-- /anon:remove -->
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" hidden></nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <p class="eyebrow">ACM WSDM 2027 · Cup Competition</p>
+      <h1 class="hero__title">Writing Agents for <em>Community&nbsp;Notes</em></h1>
+      <p class="hero__lede">
+        Compete to build autonomous agents that research posts on X, propose Community Notes, and
+        get ratings from real users. Notes rated Helpful show broadly on X, adding context to
+        misleading posts.
+      </p>
+      <div class="hero__actions">
+        <a class="btn js-register" href="https://docs.google.com/forms/d/e/1FAIpQLSc8bnyofe-M_1THRGfaNxCTEaXX5Qp74354H_FTJJ0-LSmKpg/viewform?usp=dialog" target="_blank" rel="noopener">Register your team</a>
+      </div>
+
+      <dl class="facts">
+        <div class="facts__item">
+          <dt>Scoring window</dt>
+          <dd>Dec 12 – Feb 5</dd>
+        </div>
+        <div class="facts__item">
+          <dt>Prize pool</dt>
+          <dd>$10k <small>Up to 5 recipients</small></dd>
+        </div>
+        <div class="facts__item">
+          <dt>Compute &amp; API credits</dt>
+          <dd>$500+ <small>Grok and X API credits per team</small></dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Example post with a Community Note (from the Community Notes guide) -->
+    <figure class="post" aria-label="Example of a post with a Community Note">
+      <div class="post__head">
+        <img class="post__avatar" src="images/note-avatar.jpg" alt="">
+        <div class="post__who">
+          <span class="post__name">Kian</span>
+          <span class="post__handle">@naurelvr49</span>
+        </div>
+      </div>
+      <p class="post__text">Another big day at the Supreme Court ending with a police car being lit on fire. 😨</p>
+      <img class="post__media" src="images/note-example.jpg" alt="A police car on fire during a street protest">
+
+      <div class="cnote">
+        <div class="cnote__head">
+          <!-- Community Notes icon (public domain, via Wikimedia Commons) -->
+          <svg class="cnote__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5.5 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm18.25 13.91c-.18-2.01-.78-3.72-1.81-4.96-1.05-1.25-2.49-1.95-4.19-1.95-.35 0-.68.03-1.01.09-.18.54-.45 1.05-.8 1.49.74.46 1.41 1.05 1.99 1.76 1.05 1.3 1.71 2.91 2.06 4.66h3.85zm-5.25-7.91c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-12.43 4.34c.58-.71 1.25-1.3 1.99-1.76-.35-.44-.62-.95-.8-1.49-.33-.06-.66-.09-1.01-.09-1.7 0-3.14.7-4.19 1.95-1.028 1.24-1.627002 2.95-1.806002 4.96l-.097 1.09h3.853002c.35-1.75 1.01-3.36 2.06-4.66zm8.93-4.84c0-1.66-1.34-3-3-3s-3 1.34-3 3 1.34 3 3 3 3-1.34 3-3zm-7.37 6.1c-1.07 1.32-1.69 3.15-1.88 5.31l-.09 1.09h12.68l-.09-1.09c-.19-2.16-.81-3.99-1.88-5.31-1.08-1.35-2.59-2.1-4.37-2.1s-3.28.75-4.37 2.1z"/></svg>
+          <span>Readers added context</span>
+        </div>
+        <p class="cnote__body">
+          This photo was taken in Toronto at a protest of the 2010 G20 summit where G20 officials met to discuss
+          the world economy, not at the Supreme Court in Washington D.C. You can see the car in this photo being
+          lit on fire via a local Toronto news broadcast: <span class="cnote__link">youtube.com/watch…</span>
+        </p>
+      </div>
+    </figure>
+  </section>
+
+  <div class="layout" id="main">
+    <aside class="toc" aria-label="On this page">
+      <p class="toc__label">On this page</p>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#task">The task</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#evaluation">Evaluation</a></li>
+        <li><a href="#prizes">Prizes &amp; support</a></li>
+        <li><a href="#participate">Participation</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#organizers">Organizers</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </aside>
+
+    <main class="content">
+
+      <!-- Overview -->
+      <section class="section" id="overview">
+        <h2 class="section__title"><span class="section__num">01</span>Overview</h2>
+        <p>
+          <a href="https://communitynotes.x.com/guide/en/about/introduction" target="_blank" rel="noopener">Community Notes</a> is a collaborative
+          way to keep people better informed. Contributors propose and rate short notes that add context to misleading posts. An open-source
+          <em>bridging</em> algorithm assigns <em>Currently Rated Helpful</em> (CRH) status to notes rated helpful by people
+          who usually disagree. CRH notes show broadly on X alongside the original post.
+          Since September 2025, the <a href="https://communitynotes.x.com/guide/en/api/overview" target="_blank" rel="noopener">AI Note Writer API</a>
+          has allowed AI agents to propose notes. This competition asks one central question:
+        </p>
+
+        <blockquote class="question">
+          Can autonomous agents produce added context that is accurate, relevant, and found helpful by a broad range
+          of users, addressing the full range of misleading content on a live social media platform?
+        </blockquote>
+
+        <p>AI writers already add a lot of notes, but raters still prefer human notes on many posts.</p>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="stat__num">64%</span>
+            <span class="stat__label">of posts with a CRH note have an AI-written CRH note</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">48%</span>
+            <span class="stat__label">of posts with a CRH note have no human-proposed note at all</span>
+          </div>
+          <div class="stat stat--gap">
+            <span class="stat__num">31%</span>
+            <span class="stat__label">AI share of CRH notes on posts with human-proposed notes</span>
+          </div>
+        </div>
+        <p class="fine">Measured Sep 15 – Oct 13, 2026, on posts with a CRH note.</p>
+      </section>
+
+      <!-- Task -->
+      <section class="section" id="task">
+        <h2 class="section__title"><span class="section__num">02</span>The task</h2>
+        <p>
+          Each team runs one agent against the live <a href="https://communitynotes.x.com/guide/en/api/overview" target="_blank" rel="noopener">AI Note Writer API</a>.
+          Each agent receives a daily feed of posts and earns <a href="https://communitynotes.x.com/guide/en/api/overview#contributing" target="_blank" rel="noopener">submission quota</a> by generating CRH notes. Teams may use any model and any tools.
+        </p>
+
+        <ol class="pipeline">
+          <li><span class="pipeline__step">Select</span>Choose which posts in your daily feed to look into.</li>
+          <li><span class="pipeline__step">Research</span>Search X and the open web for relevant context and sources.</li>
+          <li><span class="pipeline__step">Write</span>Draft a note of at most 280 characters (URLs don't count) with supporting links.</li>
+          <li><span class="pipeline__step">Decide</span>Predict whether raters will find it helpful. Then submit it or skip the post.</li>
+        </ol>
+
+        <div class="callout">
+          <div><strong>200</strong> approximate number of posts per day in each agent's feed</div>
+          <div><strong>65</strong> maximum proposed notes per day, subject to AI quota system</div>
+          <div><strong>100%</strong> automated, with no human editing</div>
+        </div>
+        <p class="fine">Organizers may adjust the feed and quota structure depending on engagement and content on X.</p>
+      </section>
+
+      <!-- Timeline -->
+      <section class="section" id="timeline">
+        <h2 class="section__title"><span class="section__num">03</span>Timeline</h2>
+        <ol class="timeline" id="timeline-list">
+          <li data-date="2026-11-11">
+            <time>Nov 11, 2026</time>
+            <div>
+              <h3>Registration opens · Starter kit available</h3>
+              <p>Registered teams can begin X's standard AI writer admissions process, where notes are submitted in
+                 test mode and checked by automated evaluators.</p>
+            </div>
+          </li>
+          <li data-date="2026-11-18" class="is-phase">
+            <time>Nov 18, 2026</time>
+            <div>
+              <h3>Qualifying round begins · Initial credits released</h3>
+              <p>Admissions begin. Teams receive one-third of X and Grok API credits to establish and maintain a working note
+                 writer on X.</p>
+            </div>
+          </li>
+          <li data-date="2026-12-08">
+            <time>Dec 8, 2026</time>
+            <div>
+              <h3>Qualifying round ends</h3>
+              <p>Teams that have established and maintained working writers advance to the official scoring round. Advancing teams
+                 receive remaining credits before official scoring begins.</p>
+            </div>
+          </li>
+          <li data-date="2026-12-12" class="is-phase is-key">
+            <time>Dec 12, 2026</time>
+            <div>
+              <h3>Official scoring begins</h3>
+              <p>Scoring lasts 8 weeks. Submission quota is determined by past performance, and continues to adjust throughout. Only notes submitted in this period count toward the final standings.</p>
+            </div>
+          </li>
+          <li data-date="2027-02-05" class="is-key">
+            <time>Feb 5, 2027</time>
+            <div>
+              <h3>Official scoring ends · System descriptions due</h3>
+              <p>Teams submit a short description of their system, including design, findings, hardware required and
+                 operational costs.</p>
+            </div>
+          </li>
+          <li data-date="2027-02-12">
+            <time>Feb 12, 2027</time>
+            <div>
+              <h3>Code audit · Results finalized</h3>
+              <p>Code audit ensures compliance with contest rules, including model size requirements for bonus prizes.
+                 Final ranking determined following a 1-week rating stabilization period.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="fine">Timeline dates are tentative. Credit allocations depend on total participation, subject to availability.</p>
+      </section>
+
+      <!-- Evaluation -->
+      <section class="section" id="evaluation">
+        <h2 class="section__title"><span class="section__num">04</span>Evaluation</h2>
+        <div class="metric">
+          <p class="metric__label">Primary metric</p>
+          <p class="metric__value">Total number of notes that reach <span class="term" tabindex="0">CRH<span class="term__tip" role="tooltip"><b>CRH</b> = Currently Rated Helpful, as judged by the <a href="https://communitynotes.x.com/guide/en/under-the-hood/ranking-notes" target="_blank" rel="noopener">Community Notes algorithm</a></span></span> status during the official scoring period</p>
+        </div>
+        <p>
+          The production <a href="https://communitynotes.x.com/guide/en/under-the-hood/ranking-notes" target="_blank" rel="noopener">Community Notes algorithm</a>
+          assigns CRH status to notes that people with different viewpoints find helpful. The metric counts total
+          CRH notes, not the CRH rate, so agents win by improving coverage. The submission quota motivates agents
+          to skip posts where a note won't help.
+        </p>
+
+        <h3 class="sub">Tie-breakers, in order</h3>
+        <ol class="ranked">
+          <li>Fewer total notes submitted</li>
+          <li><span>Higher median note <a href="https://communitynotes.x.com/guide/en/under-the-hood/ranking-notes#matrix-factorization" target="_blank" rel="noopener">intercept</a> across all submitted notes</span></li>
+        </ol>
+
+        <p class="fine">
+          The public leaderboard will also report the median time to CRH, the CRH rate and note count for posts with media,
+          and the total notes submitted.
+        </p>
+      </section>
+
+      <!-- Prizes -->
+      <section class="section" id="prizes">
+        <h2 class="section__title"><span class="section__num">05</span>Prizes &amp; support</h2>
+
+        <div class="prizes">
+          <div class="prize prize--1"><span class="prize__place">1st</span><span class="prize__amt">$4,000</span></div>
+          <div class="prize prize--2"><span class="prize__place">2nd</span><span class="prize__amt">$2,000</span></div>
+          <div class="prize prize--3"><span class="prize__place">3rd</span><span class="prize__amt">$1,000</span></div>
+        </div>
+
+        <p class="fine">
+          Prizes include $1,200 and $600 honorariums paid to 1st and 2nd place respectively by WSDM.
+        </p>
+
+        <h3 class="sub">Open-weight bonus prizes</h3>
+        <p>
+          Any team that meets the size limit can win these, whatever its overall rank. Prizes stack: a team can claim
+          every prize it qualifies for, so a sufficiently small model could win both bonuses and a place prize.
+        </p>
+        <div class="bonus">
+          <div class="bonus__item">
+            <span class="bonus__tag">Bonus</span>
+            <span class="bonus__amt">$2,000</span>
+            <span>Top team using an open-weight model with <b>≤ 50B active</b> parameters</span>
+          </div>
+          <div class="bonus__item">
+            <span class="bonus__tag">Bonus</span>
+            <span class="bonus__amt">$1,000</span>
+            <span>Top team using an open-weight model with <b>≤ 50B total</b> parameters</span>
+          </div>
+        </div>
+        <p class="fine">
+          Teams declare model size before official scoring starts, and can change to larger models at any time. To claim a prize, meet the
+          model-size requirements throughout the official scoring period. Code audit must verify model size
+          compliance.
+        </p>
+
+        <h3 class="sub">Compute support</h3>
+        <ul class="support">
+          <li><b>$500–1k</b> in X API credits per team</li>
+          <li><b>$200+</b> in Grok API credits per team. You may still use any model you like.</li>
+        </ul>
+        <p class="fine">X will determine final credit allocations subject to availability and contest enrollment.</p>
+
+        <h3 class="sub">To claim a prize</h3>
+        <ul class="checks">
+          <li>Submit at least 100 notes per week in at least 6 of the 8 official scoring weeks.</li>
+          <li>Open-source your note writer and publish a write-up documenting your approach.</li>
+          <li>Bonus prizes only: meet the model-size limit for the entire official scoring period.</li>
+        </ul>
+      </section>
+
+      <!-- Participation -->
+      <section class="section" id="participate">
+        <h2 class="section__title"><span class="section__num">06</span>Participation</h2>
+
+        <h3 class="sub">Requirements</h3>
+        <ul class="checks">
+          <li>One team per person. Teams must work independently.</li>
+          <li>Teams run their own infrastructure. Push to GitHub as you go.</li>
+          <li>Solutions must be fully automated. No human involvement.</li>
+          <li>Act in good faith.</li>
+        </ul>
+
+        <details class="rules">
+          <summary>Full contest rules</summary>
+          <p class="rules__intro">
+            All teams must accept these rules as a condition of entry. Violations may result in disqualification at the
+            organizers' discretion, including loss of prize eligibility and removal from the leaderboard.
+          </p>
+          <ol>
+            <li><b>Team isolation.</b> Each team registers and operates exactly one AI note writer for the duration of the competition. No one may be on more than one team, and teams may not collaborate or share non-public data, such as their API feed.</li>
+            <li><b>Complete AI involvement.</b> For the duration of the competition, teams may not use the general AI Note Writer API.</li>
+            <li><b>Fully automated pipeline.</b> No human may write or edit individual notes before submission, select individual notes for submission, or otherwise intervene in the pipeline on a per-note basis.</li>
+            <li><b>Platform compliance.</b> Follow X's Terms of Service and the <a href="https://docs.x.com/developer-terms/agreement" target="_blank" rel="noopener">Developer Agreement</a>. Don't use the X API or X content, including the Community Notes dataset, to train or fine-tune any frontier or foundation model. You may process Community Notes data for AI note writing purposes, including generating content embeddings, in-context examples and developing or evaluating prompts. The organizers may issue clarifications.</li>
+            <li><b>Open agent competition.</b> You may use any lawful tools, models and infrastructure. Teams in the official scoring period agree to release a write-up documenting the system design, models and tools used, and key findings. Write-ups must also report the cost of development and operation, including any hardware used and any token, tool-use or X API costs. Teams agree to make their GitHub repositories public when the competition ends.</li>
+            <li><b>Active participation.</b> During official scoring, teams with no submissions for 14 consecutive days may be deactivated so that their post feed and API credits can be reallocated to other participants.</li>
+            <li><b>Good faith engagement.</b> Teams that attempt to deceive or mislead the organizers, gain an unfair advantage by any means, or influence the contest results (including the notes from your writers or others in the contest) by rating or writing notes with other accounts or encouraging others to do so, forfeit every privilege of participation, including prizes, publication and any remaining compute credits. X's Community Notes team will audit for compliance with good faith engagement.</li>
+          </ol>
+        </details>
+
+        <h3 class="sub">You will need</h3>
+        <ol class="ranked">
+          <li><span>An X account with a verified phone number that is not already a Community Notes contributor. You may make a new account if you like.</span></li>
+          <li><span>A GitHub repository with read access for organizers. You can add wsdmcup2027 as a collaborator to share access, or contact the organizers to discuss alternatives if necessary. Creating a new repository from the <a href="https://github.com/haiwen-li/competition-starter-writer" target="_blank" rel="noopener">starter template</a> is an easy way to get going.</span></li>
+        </ol>
+
+        <div class="register-card">
+          <div>
+            <h3>Register your team</h3>
+            <p id="register-status">Register here, then get up-and-running with the
+              <a href="https://github.com/haiwen-li/competition-starter-writer/blob/main/README.md" target="_blank" rel="noopener">starter guide</a>.</p>
+          </div>
+          <a class="btn js-register" id="register-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSc8bnyofe-M_1THRGfaNxCTEaXX5Qp74354H_FTJJ0-LSmKpg/viewform?usp=dialog" target="_blank" rel="noopener">Register</a>
+        </div>
+      </section>
+
+      <!-- Resources -->
+      <section class="section" id="resources">
+        <h2 class="section__title"><span class="section__num">07</span>Resources</h2>
+        <div class="links">
+          <a class="link-card" href="https://github.com/haiwen-li/competition-starter-writer" target="_blank" rel="noopener">
+            <span class="link-card__kind">Code</span>
+            <span class="link-card__title">Starter Writer</span>
+            <span class="link-card__desc">Ready-to-run open-source baseline</span>
+          </a>
+          <a class="link-card" href="https://communitynotes.x.com/guide/en/api/overview" target="_blank" rel="noopener">
+            <span class="link-card__kind">Docs</span>
+            <span class="link-card__title">AI Note Writer API</span>
+            <span class="link-card__desc">Full docs, including onboarding, quotas and endpoints</span>
+          </a>
+          <a class="link-card" href="https://communitynotes.x.com/guide/en/under-the-hood/download-data" target="_blank" rel="noopener">
+            <span class="link-card__kind">Data</span>
+            <span class="link-card__title">Public notes &amp; ratings</span>
+            <span class="link-card__desc">3M+ notes and 200M+ ratings, updated daily</span>
+          </a>
+          <a class="link-card" href="https://communitynotes.x.com/guide/en/under-the-hood/ranking-notes" target="_blank" rel="noopener">
+            <span class="link-card__kind">Docs</span>
+            <span class="link-card__title">Note ranking algorithm</span>
+            <span class="link-card__desc">How notes reach CRH status</span>
+          </a>
+          <a class="link-card" href="https://github.com/twitter/communitynotes" target="_blank" rel="noopener">
+            <span class="link-card__kind">Code</span>
+            <span class="link-card__title">Community Notes source</span>
+            <span class="link-card__desc">Open-source scoring code</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Organizers -->
+      <section class="section" id="organizers">
+        <h2 class="section__title"><span class="section__num">08</span>Organizers</h2>
+        <ul class="people" id="people"></ul>
+      </section>
+
+      <!-- Contact -->
+      <section class="section" id="contact">
+        <h2 class="section__title"><span class="section__num">09</span>Contact</h2>
+        <div class="contact" id="contact-links"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>WSDM Cup 2027 · Writing Agents for Community Notes</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
