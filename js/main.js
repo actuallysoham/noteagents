@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------
-   Site configuration
+   Site configuration — edit these values as details are finalized.
    ------------------------------------------------------------------ */
 const CONFIG = {
   registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc8bnyofe-M_1THRGfaNxCTEaXX5Qp74354H_FTJJ0-LSmKpg/viewform?usp=dialog",
@@ -7,8 +7,12 @@ const CONFIG = {
 
   contactEmail: "noteagents@googlegroups.com",
 
+  // Add channels as they are set up. Each renders as a card above the contact note.
+  // Example: { label: "Forum", href: "https://...", desc: "Discussion & help" }
   contact: [],
 
+  // `x` is an X handle (links to x.com); `url` is a personal or academic site.
+  // `img` is relative to the site root; omit it to show initials instead.
   organizers: [
     { name: "Brad Miller", org: "Community Notes, SpaceXSI", x: "__bradmiller__", img: "images/organizers/brad-miller.jpg" },
     { name: "Nikil Selvam", org: "Stanford University", url: "https://nikilrs.com", img: "images/organizers/nikil-selvam.png" },
