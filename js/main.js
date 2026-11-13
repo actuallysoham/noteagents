@@ -14,7 +14,7 @@ const CONFIG = {
   // `x` is an X handle (links to x.com); `url` is a personal or academic site.
   // `img` is relative to the site root; omit it to show initials instead.
   organizers: [
-    { name: "Brad Miller", org: "Community Notes, SpaceXSI", x: "__bradmiller__", img: "images/organizers/brad-miller.jpg" },
+    { name: "Brad Miller", org: "Community Notes, SpaceXSI", url: "https://bradmiller.github.io", img: "images/organizers/brad-miller.jpg" },
     { name: "Nikil Selvam", org: "Stanford University", url: "https://nikilrs.com", img: "images/organizers/nikil-selvam.png" },
     { name: "Jay Baxter", org: "Community Notes, SpaceXSI", x: "jaybaxter", img: "images/organizers/jay-baxter.jpg" },
     { name: "Jiansong Chao", org: "Community Notes, SpaceXSI" },
