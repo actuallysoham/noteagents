@@ -95,8 +95,10 @@ function initContact() {
     .join("");
   box.innerHTML =
     links +
-    `<p class="contact__note">You may also contact the organizers at
-     <a href="mailto:${CONFIG.contactEmail}">${CONFIG.contactEmail}</a>.</p>`;
+    `<p class="contact__note">You can reach the organizers at
+     <a href="mailto:${CONFIG.contactEmail}">${CONFIG.contactEmail}</a>. After registration, you should receive an
+     invite to the WSDM Cup Discord server within 24 hours. If you do not receive a Discord invite, please contact the
+     organizers by email.</p>`;
 }
 
 /* Timeline status */
