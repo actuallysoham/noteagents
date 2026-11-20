@@ -146,7 +146,7 @@ function initMobileNav() {
 
   const sectionLinks = [...document.querySelectorAll(".toc a")]
     .map((a) => `<a href="${a.getAttribute("href")}">${a.textContent}</a>`);
-  // External links in the top bar (e.g. the conference site) are absent from the anonymized build.
+  // External links in the top bar (e.g. the conference site).
   const externalLinks = [...document.querySelectorAll(".topnav .topnav__ext")]
     .map((a) => `<a href="${a.href}" target="_blank" rel="noopener">${a.textContent}</a>`);
   panel.innerHTML = sectionLinks.concat(externalLinks).join("");
