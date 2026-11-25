@@ -28,6 +28,55 @@ const CONFIG = {
   ],
 };
 
+/* ------------------------------------------------------------------
+   Site navigation — one entry per page, rendered as the sidebar tree and the
+   mobile menu. `sections` lists [id, label] pairs matching the page's markup;
+   they are shown expanded on that page and behind a chevron elsewhere. Pages
+   without sections render as a plain row.
+   ------------------------------------------------------------------ */
+const NAV = [
+  {
+    file: "index.html", label: "Overview",
+    sections: [
+      ["overview", "Introduction"],
+      ["task", "The task"],
+      ["timeline", "Timeline"],
+      ["evaluation", "Evaluation"],
+      ["prizes", "Prizes & support"],
+      ["participate", "Participation"],
+      ["organizers", "Organizers"],
+      ["contact", "Communication"],
+    ],
+  },
+  {
+    file: "announcements.html", label: "Announcements",
+    sections: [
+      ["harnyx-credits", "Harnyx awards"],
+      ["sensitive-content", "Sensitive content"],
+      ["parallel-credits", "Parallel awards"],
+    ],
+  },
+  {
+    file: "tips.html", label: "Tips",
+    sections: [
+      ["admission", "Earn admission fast"],
+      ["latency", "Limit latency"],
+      ["engagement", "Leverage engagement"],
+      ["selective", "Be selective"],
+      ["data", "Use the data"],
+    ],
+  },
+  {
+    file: "resources.html", label: "Resources",
+    sections: [
+      ["docs", "Docs"],
+      ["data", "Data"],
+      ["code", "Code"],
+      ["papers", "Papers"],
+    ],
+  },
+];
+
 const fmt = (iso) =>
   new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
@@ -116,9 +165,64 @@ function initTimeline() {
   });
 }
 
-/* Scroll-spy for the sidebar table of contents */
+/* Navigation tree (sidebar and mobile menu), rendered from NAV */
+function currentPage() {
+  // Hosts may serve pages without the .html extension (e.g. Netlify's pretty
+  // URLs turn tips.html into /tips), so match on the name alone. The site root
+  // and anything unrecognized are the overview.
+  const name = decodeURIComponent(location.pathname)
+    .replace(/\/+$/, "")
+    .split("/")
+    .pop()
+    .replace(/\.html$/, "");
+  const page = NAV.find((p) => p.file.replace(/\.html$/, "") === name);
+  return page ? page.file : "index.html";
+}
+
+function renderNavTree(container, idPrefix) {
+  if (!container) return;
+  const here = currentPage();
+  container.innerHTML =
+    `<ol class="navtree">` +
+    NAV.map((p) => {
+      const current = p.file === here;
+      const row = `<a class="navtree__page" href="${current ? "#top" : p.file}"${current ? ' aria-current="page"' : ""}>${p.label}</a>`;
+      if (!p.sections || !p.sections.length) {
+        return `
+        <li class="navtree__item${current ? " is-current" : ""}">
+          <div class="navtree__row">${row}</div>
+        </li>`;
+      }
+      const listId = `${idPrefix}-${p.file.replace(/\W/g, "")}`;
+      const sections = p.sections
+        .map(([id, label]) => `<li><a href="${current ? "" : p.file}#${id}">${label}</a></li>`)
+        .join("");
+      return `
+        <li class="navtree__item${current ? " is-current is-open" : ""}">
+          <div class="navtree__row">
+            ${row}
+            <button class="navtree__toggle" type="button" aria-expanded="${current}" aria-controls="${listId}" aria-label="${p.label} sections"></button>
+          </div>
+          <ol class="navtree__sections" id="${listId}">${sections}</ol>
+        </li>`;
+    }).join("") +
+    `</ol>`;
+
+  container.querySelectorAll(".navtree__toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const open = btn.closest(".navtree__item").classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", String(open));
+    });
+  });
+}
+
+function initSidebar() {
+  renderNavTree(document.querySelector(".toc"), "toc");
+}
+
+/* Scroll-spy for the current page's sections in the sidebar */
 function initScrollSpy() {
-  const links = [...document.querySelectorAll(".toc a")];
+  const links = [...document.querySelectorAll('.toc .navtree__sections a[href^="#"]')];
   const sections = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
   if (!("IntersectionObserver" in window) || !sections.length) return;
 
@@ -128,14 +232,21 @@ function initScrollSpy() {
   // Nothing intersects while the hero is on screen, so start on the first section.
   setActive(sections[0].id);
 
+  const atBottom = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+
   const observer = new IntersectionObserver(
     (entries) => {
+      if (atBottom()) return;
       const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
       if (visible.length) setActive(visible[0].target.id);
     },
     { rootMargin: "-20% 0px -65% 0px" }
   );
   sections.forEach((s) => observer.observe(s));
+
+  // A short final section may never reach the observed band, so at the end of
+  // the page mark the last section active.
+  window.addEventListener("scroll", () => { if (atBottom()) setActive(sections[sections.length - 1].id); }, { passive: true });
 }
 
 /* Mobile menu */
@@ -144,12 +255,12 @@ function initMobileNav() {
   const panel = document.getElementById("mobile-nav");
   if (!toggle || !panel) return;
 
-  const sectionLinks = [...document.querySelectorAll(".toc a")]
-    .map((a) => `<a href="${a.getAttribute("href")}">${a.textContent}</a>`);
-  // External links in the top bar (e.g. the conference site).
+  // Same tree as the sidebar, followed by any external links in the top bar
+  // (e.g. the conference site).
+  renderNavTree(panel, "mnav");
   const externalLinks = [...document.querySelectorAll(".topnav .topnav__ext")]
-    .map((a) => `<a href="${a.href}" target="_blank" rel="noopener">${a.textContent}</a>`);
-  panel.innerHTML = sectionLinks.concat(externalLinks).join("");
+    .map((a) => `<a class="mobile-nav__ext" href="${a.href}" target="_blank" rel="noopener">${a.textContent}</a>`);
+  panel.insertAdjacentHTML("beforeend", externalLinks.join(""));
 
   const close = () => {
     toggle.setAttribute("aria-expanded", "false");
@@ -178,6 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initOrganizers();
   initContact();
   initTimeline();
+  initSidebar();
   initScrollSpy();
   initMobileNav();
   initHeader();
